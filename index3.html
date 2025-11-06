@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakina Kasim - HR Technology Leader</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // IMPORTANT: This inline script PREVENTS FOUC (Flash of Unstyled Content)
+      // It applies the theme from localStorage or system preference immediately.
+      (function () {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+
+      // Tailwind Config - This makes the 'dark:' variant available.
+      tailwind.config = {
+        darkMode: 'class', // Ensures Tailwind's dark: variant works by looking for the 'dark' class on HTML
+        theme: {
+          extend: {
+            // Extend Tailwind's default theme here if needed for custom animations or colors.
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-padding-top: 4rem;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        /* Explicitly setting body background to handle potential conflicts. */
+        background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+        transition: background-color 0.3s ease-in-out; /* Smooth transition for background */
+      }
+      /* When HTML has 'dark' class, apply the dark background to body */
+      html.dark body {
+        background-color: #1f2937; /* Tailwind's bg-gray-900 */
+      }
+
+      /* Custom styles for the resume container (card) */
+      .resume-container {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      /* Specific list style for skills */
+      .skills-list li {
+        position: relative;
+        padding-left: 1.5em; /* Space for the bullet/icon */
+      }
+      .skills-list li::before {
+        content: '•'; /* Unicode bullet point */
+        color: #fbbf24; /* Tailwind yellow-400 */
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      /* Smooth transition for SVG icons (opacity and transform for potential animations) */
+      .theme-icon-transition {
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300"
+  >
+    <nav
+      class="sticky top-0 z-20 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300"
+    >
+      <ul
+        class="flex justify-around text-sm font-semibold text-gray-700 dark:text-gray-200 py-3 transition-colors duration-300"
+      >
+        <li>
+          <a
+            href="#summary"
+            class="relative after:content-[''] after:block after:h-0.5 after:bg-yellow-400 dark:after:bg-yellow-300 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            >Summary</a
+          >
+        </li>
+        <li>
+          <a
+            href="#platforms"
+            class="relative after:content-[''] after:block after:h-0.5 after:bg-yellow-400 dark:after:bg-yellow-300 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            >Platforms</a
+          >
+        </li>
+
+        <li>
+          <a
+            href="#education"
+            class="relative after:content-[''] after:block after:h-0.5 after:bg-yellow-400 dark:after:bg-yellow-300 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            >Education</a
+          >
+        </li>
+
+        <li>
+          <a
+            href="#experience"
+            class="relative after:content-[''] after:block after:h-0.5 after:bg-yellow-400 dark:after:bg-yellow-300 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            >Experience</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hidden md:flex justify-end px-6 py-2">
+      <button
+        id="desktopThemeToggle"
+        class="flex items-center gap-2 bg-yellow-400 dark:bg-gray-800 text-black dark:text-yellow-300 px-3 py-2 rounded-full shadow-md hover:scale-105 transition-all duration-300"
+        aria-label="Toggle dark mode"
+      >
+        <svg
+          class="w-5 h-5 theme-icon-transition text-yellow-500 dark:hidden"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h1M4 12H3m15.325 5.325l-.707.707M6.364 6.364l-.707-.707m12.728 0l-.707-.707M6.364 17.636l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          />
+        </svg>
+        <svg
+          class="w-5 h-5 theme-icon-transition text-gray-800 hidden dark:block"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          />
+        </svg>
+        <span class="text-sm font-medium">Toggle Theme</span>
+      </button>
+    </div>
+
+    <div
+      class="resume-container max-w-4xl mx-auto my-8 bg-white dark:bg-gray-800 dark:text-gray-100 rounded-md overflow-hidden shadow-lg transition-colors duration-300"
+    >
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-1/3 bg-[#2C2F36] dark:bg-[#1E2025] text-white p-8">
+          <div class="flex justify-center items-center mb-8">
+            <img
+              src="./Sakina Kasim Head Shot.jpg"
+              onerror="this.onerror=null;this.src='https://placehold.co/128x128/FBBF24/2C2F36?text=SK';"
+              alt="Sakina Kasim"
+              class="rounded-full w-32 h-32 object-cover object-top border-4 border-yellow-400"
+            />
+          </div>
+
+          <div class="mb-8">
+            <h3
+              class="text-lg font-bold uppercase tracking-wider mb-4 border-b border-gray-500 pb-2"
+            >
+              Contact Details
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start">
+                <svg
+                  class="w-4 h-4 mr-3 mt-1 text-yellow-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                  ></path>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                </svg>
+                <a
+                  href="mailto:sakina.kapadia5253@gmail.com"
+                  class="hover:underline text-yellow-300"
+                  >sakina.kapadia5253@gmail.com</a
+                >
+                [cite: 4]
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-4 h-4 mr-3 mt-1 text-yellow-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                  ></path>
+                </svg>
+                <span>206.566.4509</span> [cite: 5]
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-4 h-4 mr-3 mt-1 text-yellow-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span>Kirkland, WA, 98033</span> [cite: 6]
+              </li>
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-4 h-4 mr-3 mt-1 text-yellow-400"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                  />
+                </svg>
+                <span
+                  ><a
+                    href="https://www.linkedin.com/in/sakina-kasim"
+                    target="_blank"
+                    class="text-yellow-300 hover:underline"
+                    >View Live Portfolio</a
+                  ></span
+                >
+              </li>
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-4 h-4 mr-3 mt-1 text-yellow-400"
+                >
+                  <path
+                    d="M18 6.5A1.5 1.5 0 0016.5 5H13a.5.5 0 01-.478-.635l-.266-.8C12.022 3.2 11.536 3 11 3H9c-.536 0-1.022.2-1.256.565l-.266.8A.5.5 0 017 5H3.5A1.5 1.5 0 002 6.5v8A1.5 1.5 0 003.5 16h13A1.5 1.5 0 0018 14.5v-8zm-5 0H7v-.5c0-.276.1-.5.25-.5h5.5c.15 0 .25.224.25.5v.5z"
+                  />
+                </svg>
+                <span
+                  ><a
+                    href="linkedin.com/in/sakina-kasim-1b5b48ba"
+                    target="_blank"
+                    class="text-yellow-300 hover:underline"
+                    >LinkedIn Profile</a
+                  ></span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-8">
+            <h3
+              class="text-lg font-bold uppercase tracking-wider mb-4 border-b border-gray-500 pb-2"
+            >
+              Education
+            </h3>
+            <div class="text-sm mb-4">
+              <p class="font-bold">Bachelor of Business Administration (BBA)</p>
+              <p class="font-bold">Bachelor of Science (BS), Computer Science</p>
+              [cite: 11, 12]
+              <p class="italic text-gray-300 dark:text-gray-400">
+                Savitribai Phule Pune University (Or Pune University)
+              </p>
+              [cite: 9, 10]
+              <p class="text-gray-400 dark:text-gray-400">Pune, India</p>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="text-lg font-bold uppercase tracking-wider mb-4 border-b border-gray-500 pb-2"
+            >
+              Core HRIT Skills
+            </h3>
+            <ul class="space-y-2 text-sm skills-list">
+              <li>HR Tech Strategy & Roadmap</li>
+              [cite: 14]
+              <li>Workday HCM / Talent Acquisition</li>
+              [cite: 14]
+              <li>ServiceNow (HRSD)</li>
+              [cite: 14]
+              <li>Phenom & Cornerstone Platforms</li>
+              [cite: 15]
+              <li>Digital Employee Experience (DEX)</li>
+              [cite: 16]
+              <li>AI, Automation & Digital Workflow</li>
+              [cite: 16]
+              <li>Workforce Intelligence / HR Analytics</li>
+              [cite: 16, 17]
+              <li>Vendor Mgmt (SLA / RFP)</li>
+              [cite: 18]
+              <li>Data Integrity & Compliance</li>
+              [cite: 18]
+              <li>HRIT Leadership & Accountability</li>
+              [cite: 19]
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full md:w-2/3 bg-white p-8 dark:bg-gray-800">
+          <div class="pb-6 mb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#2C2F36] dark:text-white">
+              Sakina Kasim
+            </h1>
+            [cite: 1]
+            <p class="text-xl md:text-2xl text-gray-500 dark:text-gray-300 mt-1">
+              HR Systems Technical Lead / HR Transformation Leader
+            </p>
+            [cite: 2]
+          </div>
+
+          <div class="mb-8">
+            <h2
+              id="summary"
+              class="text-2xl font-bold text-gray-700 dark:text-gray-100 border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-4"
+            >
+              Summary/Objective
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Seeking the Associate Director, HR Technology role to apply 15+ years of experience
+              governing HRIT investment and executing global HR technology roadmaps. [cite: 21]
+              <br class="mb-2" />
+              Proven ability to partner with executive HR and IT stakeholders to align system
+              architecture, delivering a modern, data-driven, and scalable associate experience.
+              [cite: 22]
+              <br class="mb-2" />
+              Expertise spans HRIT Portfolio Governance, IT Financial Management, data integrity,
+              and driving organizational efficiency through automation and digital workflow
+              implementation. [cite: 23]
+            </p>
+          </div>
+
+          <div class="mb-8">
+            <h2
+              id="experience"
+              class="text-2xl font-bold text-gray-700 dark:text-gray-100 border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-4"
+            >
+              Professional Experience
+            </h2>
+            <div class="mb-6">
+              <h3 class="text-lg font-bold dark:text-gray-100">
+                iRhythm Technologies, Inc. | HR Systems Technical Lead / HR Transformation Leader
+              </h3>
+              [cite: 25]
+              <p class="font-semibold text-gray-600 dark:text-gray-300">Jan 2022 - Present</p>
+              <ul
+                class="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Directed major, multi-year HR Technology Portfolio Transformations (Workday HCM
+                  suite), overseeing systems integration and complex data migration efforts for
+                  compliance. [cite: 26]
+                </li>
+                <li>
+                  Managed the end-to-end technology lifecycle for core platforms, directing system
+                  cutover and stabilization for global teams. [cite: 27]
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-lg font-bold dark:text-gray-100">
+                F5 Networks | Sr. Product Owner - IT, HR & Legal Systems
+              </h3>
+              [cite: 28]
+              <p class="font-semibold text-gray-600 dark:text-gray-300">Sep 2019 - Jan 2022</p>
+              <ul
+                class="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Partnered directly with Executive stakeholders (HR, IT, Legal) to define and
+                  integrate global HR technology roadmaps, ensuring IT investments supported the
+                  strategic needs. [cite: 29]
+                </li>
+                <li>
+                  Led governance and vendor selection initiatives, including formal RFP processes,
+                  to approve new HR technology investments. [cite: 30]
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-lg font-bold dark:text-gray-100">
+                Continental Mills | HR Technology Transformation Lead
+              </h3>
+              [cite: 31]
+              <p class="font-semibold text-gray-600 dark:text-gray-300">Aug 2016 - Jul 2019</p>
+              <ul
+                class="list-disc list-inside mt-2 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Drove HRIT investment strategy to automate core processes, achieving a 40%
+                  reduction in manual workload. [cite: 34]
+                </li>
+                <li>
+                  Developed Executive-level analytics and reporting for Finance and Leadership,
+                  which directly drove IT investment decisions. [cite: 35]
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h2
+              id="platforms"
+              class="text-2xl font-bold text-gray-700 dark:text-gray-100 border-b-2 border-gray-200 dark:border-gray-700 pb-2 mb-4"
+            >
+              Technology Platforms & Functional Expertise
+            </h2>
+            <div class="text-sm mb-4">
+              <p class="font-bold text-gray-600 dark:text-gray-200">Global HRIS Platforms & SI:</p>
+              <ul
+                class="list-disc list-inside mt-1 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Workday Core HCM, Payroll, Compensation, Talent, LMS, Analytics, Recruiting;
+                  ServiceNow (HRSD); SAP SuccessFactors; UKG/Kronos; PeopleSoft; Oracle HCM;
+                  Cornerstone.
+                </li>
+                [cite: 37, 38]
+              </ul>
+            </div>
+            <div class="text-sm mb-4">
+              <p class="font-bold text-gray-600 dark:text-gray-200">HR Functional Processes:</p>
+              <ul
+                class="list-disc list-inside mt-1 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Core HR, Global Payroll, Benefits Administration, Talent Management (LMS,
+                  Performance), Recruiting & Onboarding, Time & Attendance, Contingent Workforce
+                  Management (VNDLY).
+                </li>
+                [cite: 39]
+              </ul>
+            </div>
+            <div class="text-sm mb-4">
+              <p class="font-bold text-gray-600 dark:text-gray-200">Systems & Integrations:</p>
+              <ul
+                class="list-disc list-inside mt-1 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  Systems Integration (SI) Best Practices, Middleware (e.g., APIs), Data Migration,
+                  Data Governance & Integrity, Security Management, Regulatory Compliance (SOX).
+                </li>
+                [cite: 40]
+              </ul>
+            </div>
+            <div class="text-sm mb-4">
+              <p class="font-bold text-gray-600 dark:text-gray-200">Business Intelligence:</p>
+              <ul
+                class="list-disc list-inside mt-1 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  HR Analytics & Reporting, Workday Reporting, Tableau, Power BI, Cognos Reporting,
+                  Dashboard Design, Data-Driven Decision Making.
+                </li>
+                [cite: 41]
+              </ul>
+            </div>
+            <div class="text-sm">
+              <p class="font-bold text-gray-600 dark:text-gray-200">
+                Leadership & Portfolio Oversight:
+              </p>
+              <ul
+                class="list-disc list-inside mt-1 text-gray-600 dark:text-gray-300 space-y-1 leading-relaxed"
+              >
+                <li>
+                  HR Technology Transformation & Program Management: Deep experience driving
+                  multi-year, global HRIS transformations and post-acquisition platform
+                  harmonization to achieve strategic goals.
+                </li>
+                [cite: 43]
+                <li>
+                  Change Leadership & Organizational Readiness: Recognized for strong stakeholder
+                  management, change management, and developing organizational readiness strategies
+                  to ensure high user adoption and business alignment.
+                </li>
+                [cite: 44]
+                <li>
+                  Project Methodologies: Skilled in delivering end-to-end HR technology solutions
+                  using both Agile and Waterfall methodologies, including UAT, Regression Testing,
+                  and Release Management.
+                </li>
+                [cite: 45]
+                <li>
+                  Risk & Compliance: Comprehensive knowledge of compliance, SOX, Risk Mitigation,
+                  and Data Governance standards across global deployments.
+                </li>
+                [cite: 46]
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+      const htmlElement = document.documentElement;
+
+      const toggleTheme = () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      };
+
+      desktopThemeToggle.addEventListener('click', toggleTheme);
+
+      // Initialize button text based on current theme (optional)
+      const updateButtonText = () => {
+        const span = desktopThemeToggle.querySelector('span');
+        if (htmlElement.classList.contains('dark')) {
+          span.textContent = 'Toggle Theme (Dark)';
+        } else {
+          span.textContent = 'Toggle Theme (Light)';
+        }
+      };
+      // updateButtonText(); // You can uncomment this line if you want the button to explicitly state the current theme.
+    </script>
+  </body>
+</html>
